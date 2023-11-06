@@ -1,0 +1,74 @@
+<mat-toolbar color="primary">
+    <span>Crud Application</span>
+    <span class="example-spacer"></span>
+    <button mat-raised-button (click)="openAddForm()">
+      ADD EMPLOYEE
+    </button>
+</mat-toolbar>
+  
+<div>
+    <div class="table-container">
+      <table mat-table [dataSource]="dataSource" matSort>
+  
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+          <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+          <td mat-cell *matCellDef="let row"> {{row.name}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="username">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Username </th>
+          <td mat-cell *matCellDef="let row"> {{row.username}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+          <td mat-cell *matCellDef="let row"> {{row.email}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="address">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
+          <td mat-cell *matCellDef="let row"> {{row.address.street}}, {{row.address.suite}}, {{row.address.city}}, {{row.address.zipcode}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>
+          <td mat-cell *matCellDef="let row"> {{row.phone}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="website">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Website </th>
+          <td mat-cell *matCellDef="let row"> {{row.website}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="company">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Company </th>
+          <td mat-cell *matCellDef="let row"> {{row.company.name}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-icon-button color="primary" (click)="openEditForm(row.id)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="deleteUser(row.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+      </table>
+    </div>
+</div>
+
+<mat-toolbar class="footer">
+    <span>Footer</span>
+</mat-toolbar>
